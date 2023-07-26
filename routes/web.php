@@ -21,14 +21,25 @@ Route::get('about',function(){
     return view('view1');
 });
 
-// Route::get('/post',function(){
-//     return view('post');
-//     // we can also return html directly like 
-//     //return "<h1>post PAGE</h1>";
+// Route::get('/post/{id?}/comment/{commentid?}',function(string $id = null, string $comment=null){
+//     if($id){
+//         return "<h1>Post Id:".$id."</h1><h2>".$comment."</h2>";
+//     }else{
+//         return "<h1>Post Id:no id found</h1>";
+//     }   
 // });
 
-Route::view('post','/post');// first parameter is name of view and second parameter is name of route
+Route::get('/post/{id?}',function(string $id = null, string $comment=null){
+    if($id){
+        return "<h1>Post Id:".$id."</h1>";
+    }else{
+        return "<h1>Post Id:no id found</h1>";
+    }   
+})->where('id','[0-9]+');
 
-Route::get('/post/firstpost',function(){
-    return view('firstpost');
-});
+//whereNumber();
+//whereAlpha();
+//whereAlphaNumeric();
+//whereIN('id',['movie','song','game']);
+//where('id','[0-9]+');
+//if we want to add validation for two parameter it is done like ->where('id','[0-9]+')->where('comment','[a-zA-Z]+');
