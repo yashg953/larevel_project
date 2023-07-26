@@ -18,6 +18,17 @@ Route::get('/', function () {
 });
 
 Route::get('about',function(){
-    return view('view');
+    return view('view1');
 });
-    
+
+// Route::get('/post',function(){
+//     return view('post');
+//     // we can also return html directly like 
+//     //return "<h1>post PAGE</h1>";
+// });
+
+Route::view('post','/post');// first parameter is name of view and second parameter is name of route
+
+Route::get('/post/firstpost',function(){
+    return view('firstpost');
+});
